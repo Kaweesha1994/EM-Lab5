@@ -1,14 +1,33 @@
-/**
- * @format
- */
+import { exportAllDeclaration } from '@babel/types';
+import wd from 'wd'
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 6000;
 
-import 'react-native';
-import React from 'react';
-import App from '../App';
+const PORT = 4723
 
-// Note: test renderer must be required after react-native.
-import renderer from 'react-test-renderer';
+const config = {
+  platformName : 'android',
+  deviceName : 'da7061d3',
+  app : 'F:/MSC/sliit/academic/1ys1EM\0(Enterprise\0Mobility)/Labs/lab5/appium_test_app/android/app/build/outputs/apk/debug/app-debug.apk'
+};
 
-it('renders correctly', () => {
-  renderer.create(<App />);
-});
+const driver = wd.promiseChainRemote('localhost', PORT);
+
+beforeAll (async () => {
+await driver.init(config);
+await driver.sleep(3000);
+})
+
+test( 'my first appium test', async () => {
+
+  expect(await driver.hasElementByAccessibilityId('name')).toBe(true);
+
+  const elementName = await driver.hasElementByAccessibilityId('name')
+
+  await elementName.click();
+  await elementName.type("Hasarinda");
+
+
+
+}
+
+)

@@ -14,13 +14,16 @@ class AppComponent extends Component {
    render() {
 
       return (
-         <View style = {styles.container}>
-             <TextInput
+         <View
+         style = {styles.container}>
+             <TextInput 
+             accessibilityLabel='name'
              style = {styles.input}
              placeholder = "Enter your name"
              onChangeText = {this.setName}/>
    
             <TouchableOpacity
+            accessibilityLabel='submitButton'
             style = {styles.submitButton}
             onPress={() => {
                alert("Hello " + this.state.name)
